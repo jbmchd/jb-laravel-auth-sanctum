@@ -1,0 +1,20 @@
+{
+    "name": "jbmchd/jb-laravel-auth-sanctum",
+    "description": "Autenticação Laravel Sanctum para Jb Laravel Global",
+    "type": "library",
+    "require": {
+        "laravel/sanctum": "^2.6"
+    },
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Joabe Machado",
+            "email": "joabemachadodeabreu@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "JbAuthSantum\\": "src/"
+        }
+    }
+}
