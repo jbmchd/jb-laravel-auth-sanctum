@@ -1,15 +1,15 @@
 <?php
 
-namespace JbAuthSantum\Services;
+namespace JbSanctum\Services;
 
-use JbGlobal\Exceptions\AuthException;
-use JbGlobal\Repositories\UsuarioRepository as Repository;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use JbGlobal\Services\Service;
+use JbSanctum\Repositories\UsuarioRepository as Repository;
+use JbSanctum\Exceptions\AuthException;
 
 class AuthService extends Service
 {

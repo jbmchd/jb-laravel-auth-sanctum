@@ -1,6 +1,6 @@
 <?php
 
-namespace JbAuthSantum\Notifications;
+namespace JbSanctum\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;

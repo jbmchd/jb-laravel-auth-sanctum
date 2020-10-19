@@ -1,11 +1,11 @@
 <?php
 
-namespace JbAuthSantum\Controllers;
+namespace JbSanctum\Controllers;
 
 use Illuminate\Support\Facades\Password;
-use JbAuthSantum\Requests\AuthRequest as Request;
-use JbAuthSantum\Services\AuthService;
 use JbGlobal\Controllers\Controller;
+use JbGlobal\Requests\AuthRequest;
+use JbSanctum\Services\AuthService;
 
 class AuthController extends Controller
 {
@@ -14,14 +14,14 @@ class AuthController extends Controller
         parent::__construct($authService);
     }
 
-    public function registrar(Request $request)
+    public function registrar(AuthRequest $request)
     {
         $dados = $request->all();
         $result = $this->servico->registrar($dados);
         return response()->jbSuccess($result);
     }
 
-    public function entrar(Request $request)
+    public function entrar(AuthRequest $request)
     {
         $dados = $request->all();
         $usuario = $this->servico->buscarUsuario($dados['email'], $dados['senha']);
@@ -33,23 +33,24 @@ class AuthController extends Controller
         return response()->jbSuccess($result);
     }
 
-    public function eu(Request $request)
+    public function eu(AuthRequest $request)
     {
         $eu = $request->user();
         return response()->jbSuccess($eu);
     }
 
-    public function sair(Request $request)
+    public function sair(AuthRequest $request)
     {
         $user = $request->user();
         $result = $this->servico->sair($user);
         return response()->jbSuccess($result, 'Logout feito sucesso.');
     }
 
-    public function enviarEmailTrocarSenha(Request $request)
+    public function enviarEmailTrocarSenha(AuthRequest $request)
     {
         $email = $request->email;
         $status = $this->servico->enviarEmailTrocarSenha($email);
+
         if($status === Password::RESET_LINK_SENT){
             return response()->jbSuccess(true, 'Email para redefinição de senha enviado com sucesso');
         } else if($status === Password::INVALID_USER){
@@ -62,7 +63,7 @@ class AuthController extends Controller
 
     }
 
-    public function trocarSenha(Request $request)
+    public function trocarSenha(AuthRequest $request)
     {
         $dados = $request->only('email', 'senha', 'token');
         $status = $this->servico->trocarSenha($dados['email'], $dados['senha'], $dados['token']);

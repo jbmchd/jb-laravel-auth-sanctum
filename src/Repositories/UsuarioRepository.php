@@ -1,21 +1,15 @@
 <?php
 
-namespace JbAuthSantum\Repositories;
+namespace JbSanctum\Repositories;
 
-use JbAuthSantum\Models\Usuario as Model;
-use JbGlobal\Repositories\Repository;
 
-class UsuarioRepository extends Repository
+use JbGlobal\Repositories\UsuarioRepository as RepositoriesUsuarioRepository;
+use JbSanctum\Models\Usuario as Model;
+
+class UsuarioRepository extends RepositoriesUsuarioRepository
 {
     public function __construct(Model $model)
     {
         parent::__construct($model);
     }
-
-    public function buscarUsuarioEmail(String $email)
-    {
-        $usuario = $this->model->where(['email'=>$email])->first();
-        return $usuario;
-    }
-
 }

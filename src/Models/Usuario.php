@@ -1,9 +1,9 @@
 <?php
 
-namespace JbAuthSantum\Models;
+namespace JbSanctum\Models;
 
-use JbAuthSantum\Notifications\ResetPassword;
 use JbGlobal\Models\Usuario as ModelsUsuario;
+use JbSanctum\Notifications\ResetPassword;
 use Laravel\Sanctum\HasApiTokens;
 
 class Usuario extends ModelsUsuario
