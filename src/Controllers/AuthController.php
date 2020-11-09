@@ -12,6 +12,7 @@ class AuthController extends Controller
     public function __construct(AuthService $authService)
     {
         parent::__construct($authService);
+        $this->exception_class = AuthException::class;
     }
 
     public function registrar(AuthRequest $request)

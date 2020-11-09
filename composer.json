@@ -3,7 +3,8 @@
     "description": "Autenticação Laravel Sanctum para Jb Laravel Global",
     "type": "library",
     "require": {
-        "laravel/sanctum": "^2.6"
+        "laravel/sanctum": "^2.6",
+        "jbmchd/jb-laravel-global": "^2.1"
     },
     "minimum-stability": "dev",
     "authors": [
