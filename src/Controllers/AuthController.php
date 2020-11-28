@@ -9,11 +9,7 @@ use JbSanctum\Services\AuthService;
 
 class AuthController extends Controller
 {
-    public function __construct(AuthService $authService)
-    {
-        parent::__construct($authService);
-        $this->exception_class = AuthException::class;
-    }
+    protected $servico = AuthService::class;
 
     public function registrar(AuthRequest $request)
     {
@@ -53,14 +49,14 @@ class AuthController extends Controller
         $status = $this->servico->enviarEmailTrocarSenha($email);
 
         if($status === Password::RESET_LINK_SENT){
-            return response()->jbSuccess(true, 'Email para redefiniÃ§Ã£o de senha enviado com sucesso');
+            return response()->jbSuccess(true, 'Email para redefinição de senha enviado com sucesso');
         } else if($status === Password::INVALID_USER){
-            $this->jbException('UsuÃ¡rio invÃ¡lido');
+            $this->jbException('Usuário inválido');
         } else if($status === Password::RESET_THROTTLED){
-            $this->jbException('OperaÃ§Ã£o interrompida, talvez esteja havendo excesso de tentativas.');
+            $this->jbException('Operação interrompida, talvez esteja havendo excesso de tentativas.');
         }
 
-        $this->jbException('Ocorreu algum problema com a operaÃ§Ã£o');
+        $this->jbException('Ocorreu algum problema com a operação');
 
     }
 
@@ -72,12 +68,12 @@ class AuthController extends Controller
         if($status === Password::PASSWORD_RESET){
             return response()->jbSuccess(true, 'Senha redefinida com sucesso');
         } else if($status === Password::INVALID_USER){
-            $this->jbException('UsuÃ¡rio invÃ¡lido');
+            $this->jbException('Usuário inválido');
         } else if($status === Password::INVALID_TOKEN){
-            $this->jbException('Token invÃ¡lido');
+            $this->jbException('Token inválido');
         }
 
-        $this->jbException('Ocorreu algum problema com a operaÃ§Ã£o');
+        $this->jbException('Ocorreu algum problema com a operação');
 
     }
 }
